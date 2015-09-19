@@ -1,22 +1,24 @@
 Package.describe({
   name: 'afifsohaili:materialize-flash-messages',
+  summary: 'A package to display flash messages to the user using \
+           MaterializeCSS framework',
   version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md'
+  git: 'https://github.com/afifsohaili/materialize-flash-messages.git'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.3');
-  api.addFiles('materialize-flash-messages.js');
+  api.versionsFrom('0.9.0');
+  api.use(['minimongo', 'mongo-livedata', 'templating'], 'client');
+  api.addFiles(['messages.js', 'messages_list.html', 'messages_list.js'], 'client');
+
+  if (api.export) {
+    api.export(['FlashMessages', 'flashMessages'], 'client');
+  }
 });
 
-Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('afifsohaili:materialize-flash-messages');
-  api.addFiles('materialize-flash-messages-tests.js');
+Package.on_test(function(api) {
+  api.use('mrt:flash-messages', 'client');
+  api.use(['tinytest', 'test-helpers'], 'client');
+
+  api.addFiles('messages_tests.js', 'client');
 });
