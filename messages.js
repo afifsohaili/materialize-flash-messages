@@ -7,40 +7,31 @@
 flashMessages = new Mongo.Collection(null);
 
 FlashMessages = {
-  // Deprecated, use sendWarning instead. sendWarning is more consistent with Boostrap classes.
-  sendAlert: function(message, options) {
-    sendMessage(message, '', options);
-    console.log('Deprecated, use sendWarning instead of sendAlert');
+  send: function(message, options) {
+    sendMessage(message, options);
   },
-  sendWarning: function(message, options) {
-    sendMessage(message, 'alert-warning', options);
-  },
-  sendError: function(message, options) {
-    sendMessage(message, 'alert-error alert-danger', options);
-  },
-  sendSuccess: function(message, options) {
-    sendMessage(message, 'alert-success', options);
-  },
-  sendInfo: function(message, options) {
-    sendMessage(message, 'alert-info', options);
-  },
-  clear: function() {
-    flashMessages.remove({seen: true});
+  clear: function() { flashMessages.remove({ seen: true });
   },
   configure: function(options) {
     this.options = this.options || {};
     _.extend(this.options, options);
   },
   options: {
-    autoHide: true,
     hideDelay: 4000,
-    autoScroll: true
+    button: {
+      label: "",
+      color: "light-blue-text lighten-text-2",
+      clickHandler: function(clickEvent) { }
+    }
   }
 }
 
-sendMessage = function(message, style, options) {
-  options = options || {};
-  options.autoHide = options.autoHide === undefined ? FlashMessages.options.autoHide : options.autoHide;
+sendMessage = function(message, options) {
+  var options = options || {};
+  var buttonOverrides = options.button;
   options.hideDelay = options.hideDelay || FlashMessages.options.hideDelay;
-  flashMessages.insert({ message: message, style: style, seen: false, options: options});
+  options.button = {};
+  _.extend(options.button, FlashMessages.options.button);
+  _.extend(options.button, buttonOverrides);
+  flashMessages.insert({ message: message, seen: false, options: options });
 }
