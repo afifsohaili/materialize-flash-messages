@@ -25,7 +25,7 @@ Tinytest.add('flash-messages - Add warning message', function(test) {
 
   test.equal(messagesCount(), 1);
 
-  test.equal(findOneMessage().message, message, 
+  test.equal(findOneMessage().message, message,
     'Warning messages should be ' + message);
 
   test.equal(findOneMessage().style, 'alert-warning', 'Style should be alert-warning');
@@ -40,10 +40,10 @@ Tinytest.add('flash-messages - Add error message', function(test) {
 
   test.equal(messagesCount(), 1);
 
-  test.equal(findOneMessage().message, message, 
+  test.equal(findOneMessage().message, message,
     'Error messages should be ' + message);
 
-  test.equal(findOneMessage().style, 'alert-error alert-danger', 
+  test.equal(findOneMessage().style, 'alert-error alert-danger',
     'Style should be alert-error');
 
   test.equal(findOneMessage().seen, false, 'Seen should be false');
@@ -56,7 +56,7 @@ Tinytest.add('flash-messages - Add success message', function(test) {
 
   test.equal(messagesCount(), 1);
 
-  test.equal(findOneMessage().message, message, 
+  test.equal(findOneMessage().message, message,
     'Success messages should be ' + message);
 
   test.equal(findOneMessage().style, 'alert-success', 'Style should be alert-success');
@@ -71,7 +71,7 @@ Tinytest.add('flash-messages - Add info message', function(test) {
 
   test.equal(messagesCount(), 1);
 
-  test.equal(findOneMessage().message, message, 
+  test.equal(findOneMessage().message, message,
     'Info messages should be ' + message);
 
   test.equal(findOneMessage().style, 'alert-info', 'Style should be alert-info');
@@ -102,10 +102,10 @@ testAsyncMulti('flash-messages - Remove seen messages', [
     UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
-      test.equal(flashMessages.find({seen: false}).count(), 0, 
+      test.equal(flashMessages.find({seen: false}).count(), 0,
         'Messages should be marqued as seen (seen: true)');
       FlashMessages.clear();
-      test.equal(flashMessages.find({seen: true}).count(), 0, 
+      test.equal(flashMessages.find({seen: true}).count(), 0,
         'Messages seen should be cleared');
     }), 500);
   }

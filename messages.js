@@ -1,5 +1,5 @@
 /**
- * flashMessages 
+ * flashMessages
  * { message: String,
  *   style: String,
  *   seen: Boolean }
@@ -33,7 +33,7 @@ FlashMessages = {
   },
   options: {
     autoHide: true,
-    hideDelay: 5000,
+    hideDelay: 4000,
     autoScroll: true
   }
 }
@@ -42,5 +42,5 @@ sendMessage = function(message, style, options) {
   options = options || {};
   options.autoHide = options.autoHide === undefined ? FlashMessages.options.autoHide : options.autoHide;
   options.hideDelay = options.hideDelay || FlashMessages.options.hideDelay;
-  flashMessages.insert({ message: message, style: style, seen: false, options: options});  
+  flashMessages.insert({ message: message, style: style, seen: false, options: options});
 }
