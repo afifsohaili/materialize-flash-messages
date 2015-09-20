@@ -2,9 +2,9 @@
 Iron.Router.hooks.materializeFlashMessages = function () {
   if (this.ready()) {
     renderMaterializeToasts();
-    if (this.next) {
-      this.next();
-    }
+  }
+  if (this.next) {
+    this.next();
   }
 };
 
