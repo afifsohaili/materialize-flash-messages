@@ -33,6 +33,5 @@ sendMessage = function(message, options) {
   options.button = {};
   _.extend(options.button, FlashMessages.options.button);
   _.extend(options.button, buttonOverrides);
-  console.log("yo");
   flashMessages.insert({ message: message, seen: false, options: options });
 }
