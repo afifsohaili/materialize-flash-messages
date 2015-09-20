@@ -30,7 +30,7 @@ To clear messages:
 ```
 Only the seen messages will be cleared.
   
-##Configure
+## Configure
 
 You can configure globally the way the messages behave with FlashMessages.configure (the below sample shows the default values):
 ```javascript
@@ -47,7 +47,7 @@ You can also set individual options on messages. This will override global confi
   FlashMessages.send("Hide after 2 seconds and display a button", { hideDelay: 5000, button: { label: "DISMISS" }});
 ```
 
-##Iron Router Support
+## Iron Router Support
 
 ```javascript
 Router.onRun("materializeFlashMessages");
