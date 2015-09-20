@@ -9,7 +9,11 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('0.9.0');
   api.use(['minimongo', 'mongo-livedata', 'templating'], 'client');
-  api.addFiles(['messages.js', 'messages_list.html', 'messages_list.js'], 'client');
+  api.addFiles([
+    'messages.js',
+    'messages_list.html',
+    'messages_list.js',
+  ], 'client');
 
   if (api.export) {
     api.export(['FlashMessages', 'flashMessages'], 'client');
