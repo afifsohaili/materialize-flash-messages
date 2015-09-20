@@ -2,7 +2,7 @@ Package.describe({
   name: "afifsohaili:materialize-flash-messages",
   summary: "A package to display flash messages to the user using \
            MaterializeCSS framework",
-  version: "0.0.1",
+  version: "0.1.0",
   git: "https://github.com/afifsohaili/materialize-flash-messages.git"
 });
 
